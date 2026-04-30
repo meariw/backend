@@ -19,10 +19,10 @@ if (isset($_GET['lang']) && $_GET['lang'] === 'ru') {
 
 <header>
     <div class="logo">
-        <img src="Logo_Polytech_rus_main.jpg" alt="Логотип" width="60">
+        <img src="Logo_Polytech_rus_main.jpg" alt="Логотип МосПолитеха" width="60">
     </div>
     <div class="title">
-        <h1>Лабораторная работа: "Hello, World!"</h1>
+        <h1>Hello, World!</h1>
     </div>
 </header>
 
@@ -34,16 +34,16 @@ if (isset($_GET['lang']) && $_GET['lang'] === 'ru') {
 </main>
 
 <footer>
-    <p>Задание для самостоятельной работы: Создать веб-страницу с динамическим контентом. Загрузить код в удаленный репозиторий.</p>
+    <p>Задание для самостоятельной работы</p>
 </footer>
 
 <script>
 function changeLang() {
     let url = window.location.href;
     if (url.includes('lang=ru')) {
-        window.location.href = 'index.php';
+        window.location.href = 'HelloWorld.php';
     } else {
-        window.location.href = 'index.php?lang=ru';
+        window.location.href = 'HelloWorld.php?lang=ru';
     }
 }
 </script>

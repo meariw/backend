@@ -1,0 +1,332 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Nunito:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap");
+
+:root {
+  --pink-light: #fff0f5;
+  --pink-soft: #ffd6e7;
+  --pink-mid: #ffaed0;
+  --pink-main: #e8749a;
+  --pink-dark: #c0456e;
+  --pink-deep: #8b2252;
+  --text-dark: #3d1a2b;
+  --text-mid: #7a3d57;
+  --white: #ffffff;
+  --shadow: 0 4px 24px rgba(200, 80, 120, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 50%, #ffd6e7 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-dark);
+}
+
+header {
+  background: linear-gradient(
+    90deg,
+    var(--pink-deep) 0%,
+    var(--pink-dark) 100%
+  );
+  display: flex;
+  align-items: center;
+  padding: 14px 32px;
+  gap: 20px;
+  box-shadow: 0 3px 16px rgba(139, 34, 82, 0.35);
+  position: relative;
+}
+
+header .logo-wrap {
+  flex-shrink: 0;
+}
+
+header .logo-wrap img {
+  height: 58px;
+  width: auto;
+  display: block;
+  max-height: 58px;
+}
+
+header .header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+header .header-title h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .header-title p {
+  font-size: 0.75rem;
+  color: var(--pink-soft);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 44px 48px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow:
+    var(--shadow),
+    0 1px 0 var(--pink-soft);
+  border: 1.5px solid var(--pink-soft);
+  animation: fadeUp 0.5s ease both;
+}
+
+.card--wide {
+  max-width: 640px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: var(--pink-deep);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.card h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pink-main), var(--pink-mid));
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--pink-dark);
+  margin-bottom: 6px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--pink-soft);
+  border-radius: 12px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--pink-light);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--pink-main);
+  box-shadow: 0 0 0 3px rgba(232, 116, 154, 0.18);
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+select {
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--pink-main);
+  cursor: pointer;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--pink-main) 0%,
+    var(--pink-dark) 100%
+  );
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(200, 69, 110, 0.35);
+  margin-top: 8px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 69, 110, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.link-p2,
+.link-back {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: var(--pink-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-p2:hover,
+.link-back:hover {
+  color: var(--pink-deep);
+  text-decoration: underline;
+}
+
+.link-p2::before {
+  content: "→ ";
+}
+
+.link-back::before {
+  content: "← ";
+}
+
+.url-badge {
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-bottom: 24px;
+  font-family: "Fira Code", monospace;
+  background: var(--pink-light);
+  border: 1px solid var(--pink-soft);
+  border-radius: 8px;
+  padding: 6px 14px;
+  width: 100%;
+}
+
+.label-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--pink-dark);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.textarea-headers {
+  width: 100%;
+  min-height: 260px;
+  padding: 16px;
+  border: 1.5px solid var(--pink-soft);
+  border-radius: 14px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  background: var(--pink-light);
+  line-height: 1.7;
+  resize: vertical;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.textarea-headers:focus {
+  border-color: var(--pink-main);
+  box-shadow: 0 0 0 3px rgba(232, 116, 154, 0.18);
+  background: #fff;
+}
+
+footer {
+  background: linear-gradient(
+    90deg,
+    var(--pink-deep) 0%,
+    var(--pink-dark) 100%
+  );
+  text-align: center;
+  padding: 16px 20px;
+  color: var(--pink-soft);
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+footer span {
+  color: var(--pink-mid);
+  font-weight: 600;
+}
