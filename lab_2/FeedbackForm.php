@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<?php
+$submitUrl = 'https://httpbin.org/post';
+?>
+
 <header>
     <div class="logo-wrap">
         <img src="Logo_Polytech_rus_main.jpg" alt="Логотип МосПолитех">
@@ -22,7 +26,7 @@
     <div class="card">
         <h2>Написать нам</h2>
 
-        <form action="https://httpbin.org/post" method="POST">
+        <form action="<?php echo $submitUrl; ?>" method="POST">
 
             <div class="form-group">
                 <label for="username">Имя пользователя</label>
