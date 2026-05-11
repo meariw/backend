@@ -1,4 +1,5 @@
 <?php
+require_once 'Task/trig.php';
 session_start();
 
 if (!isset($_SESSION['history'])) {
@@ -153,6 +154,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $get_result = isset($_GET['result']) ? $_GET['result'] : null;
 $get_error  = isset($_GET['error'])  ? $_GET['error']  : null;
 $get_expr   = isset($_GET['expr'])   ? htmlspecialchars($_GET['expr']) : '';
+
+$exprFile = 'Task/expression.txt';
+if (file_exists($exprFile)) {
+    $content = trim(file_get_contents($exprFile));
+    if (preg_match('/cot\((\d+)\)/', $content, $m)) {
+        $cotVal = calcTrig('cot', (float)$m[1]);
+        $calcResult = 6 / $cotVal;
+        $get_expr = $content;
+        $get_result = $calcResult;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS phonebook CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE phonebook;
+
+CREATE TABLE IF NOT EXISTS contacts (
+    id       INT AUTO_INCREMENT PRIMARY KEY,
+    surname  VARCHAR(100) NOT NULL DEFAULT '',
+    name     VARCHAR(100) NOT NULL DEFAULT '',
+    lastname VARCHAR(100) NOT NULL DEFAULT '',
+    gender   VARCHAR(10)  NOT NULL DEFAULT '',
+    date     DATE,
+    phone    VARCHAR(30)  NOT NULL DEFAULT '',
+    location VARCHAR(255) NOT NULL DEFAULT '',
+    email    VARCHAR(100) NOT NULL DEFAULT '',
+    comment  TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
