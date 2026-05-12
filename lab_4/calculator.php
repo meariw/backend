@@ -156,7 +156,7 @@ $get_error  = isset($_GET['error'])  ? $_GET['error']  : null;
 $get_expr   = isset($_GET['expr'])   ? htmlspecialchars($_GET['expr']) : '';
 
 $exprFile = 'Task/expression.txt';
-if (file_exists($exprFile)) {
+if (file_exists($exprFile) && $get_result === null && $get_expr === '') {
     $content = trim(file_get_contents($exprFile));
     if (preg_match('/cot\((\d+)\)/', $content, $m)) {
         $cotVal = calcTrig('cot', (float)$m[1]);
