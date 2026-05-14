@@ -8,7 +8,7 @@ if (!isset($_SESSION['history'])) {
 }
 $_SESSION['iteration']++;
 
-function isnum($x)
+function isnum(string $x): bool
 {
     if (!strlen($x)) return false;
     
@@ -37,7 +37,7 @@ function isnum($x)
     return true;
 }
 
-function SqValidator($val)
+function SqValidator(string $val): bool
 {
     $open = 0;
     for ($i = 0; $i < strlen($val); $i++) {
@@ -50,7 +50,7 @@ function SqValidator($val)
     return $open === 0;
 }
 
-function calculate($val)
+function calculate(string $val): int|float|string
 {
     if (!strlen($val)) return 'Выражение не задано!';
     if (isnum($val)) return $val + 0;
@@ -111,7 +111,7 @@ function calculate($val)
     return 'Недопустимые символы в выражении';
 }
 
-function calculateSq($val)
+function calculateSq(string $val): int|float|string
 {
     if (!SqValidator($val)) return 'Неправильная расстановка скобок';
 
