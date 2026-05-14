@@ -11,11 +11,18 @@ $_SESSION['iteration']++;
 function isnum($x)
 {
     if (!strlen($x)) return false;
-    if ($x[0] === '.' || $x[0] === '0') return false;
+    
+    $start = 0;
+    if ($x[0] === '-') {
+        $start = 1;
+        if (strlen($x) === 1) return false;
+    }
+    
+    if ($x[$start] === '.') return false;
     if ($x[strlen($x) - 1] === '.') return false;
 
     $point_count = false;
-    for ($i = 0; $i < strlen($x); $i++) {
+    for ($i = $start; $i < strlen($x); $i++) {
         $c = $x[$i];
         if ($c !== '0' && $c !== '1' && $c !== '2' && $c !== '3' &&
             $c !== '4' && $c !== '5' && $c !== '6' && $c !== '7' &&
@@ -46,7 +53,7 @@ function SqValidator($val)
 function calculate($val)
 {
     if (!strlen($val)) return 'Выражение не задано!';
-    if (isnum($val))   return $val + 0;
+    if (isnum($val)) return $val + 0;
 
     $args = explode('+', $val);
     if (count($args) > 1) {
@@ -61,9 +68,14 @@ function calculate($val)
 
     $args = explode('-', $val);
     if (count($args) > 1) {
-        $result = calculate($args[0]);
-        if (!isnum((string)$result)) return $result;
-        for ($i = 1; $i < count($args); $i++) {
+        if ($args[0] === '') {
+            $result = -calculate($args[1]);
+            $i = 2;
+        } else {
+            $result = calculate($args[0]);
+            $i = 1;
+        }
+        for (; $i < count($args); $i++) {
             $arg = calculate($args[$i]);
             if (!isnum((string)$arg)) return $arg;
             $result -= $arg;
@@ -75,8 +87,9 @@ function calculate($val)
     if (count($args) > 1) {
         $sup = 1;
         for ($i = 0; $i < count($args); $i++) {
-            if (!isnum($args[$i])) return 'Неправильная форма числа!';
-            $sup *= $args[$i];
+            $arg = calculate($args[$i]);
+            if (!isnum((string)$arg)) return $arg;
+            $sup *= $arg;
         }
         return $sup;
     }
@@ -84,12 +97,13 @@ function calculate($val)
     $args = explode('/', $val);
     if (count($args) < 2) $args = explode(':', $val);
     if (count($args) > 1) {
-        if (!isnum($args[0])) return 'Неправильная форма числа!';
-        $result = $args[0] + 0;
+        $result = calculate($args[0]);
+        if (!isnum((string)$result)) return $result;
         for ($i = 1; $i < count($args); $i++) {
-            if (!isnum($args[$i])) return 'Неправильная форма числа!';
-            if ($args[$i] == 0) return 'Деление на ноль!';
-            $result /= $args[$i];
+            $arg = calculate($args[$i]);
+            if (!isnum((string)$arg)) return $arg;
+            if ($arg == 0) return 'Деление на ноль!';
+            $result /= $arg;
         }
         return $result;
     }
