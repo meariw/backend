@@ -4,7 +4,7 @@ namespace MyProject\View;
 
 class View
 {
-    private $templatesPath;
+    private string $templatesPath;
 
     public function __construct(string $templatesPath)
     {
