@@ -4,24 +4,28 @@ namespace Controllers;
 
 class BlogController
 {
+    private function render(string $view, string $title = 'Мой блог', array $vars = []): void
+    {
+        extract($vars);
+        include __DIR__ . '/../../views/' . $view . '.php';
+    }
+
     public function index(): void
     {
-        $title = 'Мой блог';
-        include __DIR__ . '/../../views/index.php';
+        $this->render('index');
     }
 
     public function aboutMe(): void
     {
-        $title = 'Обо мне';
-        include __DIR__ . '/../../views/about.php';
+        $this->render('about', 'Обо мне');
     }
 
     public function sayHello(string $name): void
     {
-        $title = 'Страница приветствия';
         $name = urldecode($name);
-        include __DIR__ . '/../../views/hello.php';
+        $this->render('hello', 'Страница приветствия', ['name' => $name]);
     }
+
     public function sayBye(string $name): void
     {
         $name = urldecode($name);
